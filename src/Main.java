@@ -24,7 +24,7 @@ import java.util.Scanner;
     }
 } */
 
-public class Main {
+/* public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Bir sayı girin: ");
@@ -48,6 +48,38 @@ public class Main {
         } else {
             // Sayı 1'den küçükse veya bolen değeri sayının karekökünden büyükse, asaldır
             return sayi > 1;
+        }
+    }
+}
+*/
+public class Main {
+    // Kontrol değişkeni
+    private static boolean islemYapildi = false;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Bir sayı girin: ");
+        int n = scanner.nextInt();
+        // Metodu sadece bir kere çağır
+        recursiveIslem(n);
+    }
+    static void recursiveIslem(int sayi) {
+        // Kontrol değişkenini kontrol et
+        if (!islemYapildi) {
+            System.out.print(sayi + " ");
+            // Sayı 0 veya negatif olduğunda durumu kontrol et
+            if (sayi <= 0) {
+                // Negatif veya 0 ise, tekrar 5 ekleyerek işlemi devam ettir
+                sayi += 5;
+                System.out.print(sayi + " ");
+                recursiveIslem(sayi);
+                // Kontrol değişkenini true yap
+                islemYapildi = true;
+                return;
+            } else {
+                // Sayı pozitif ise, 5 çıkartarak işlemi devam ettir
+                sayi -= 5;
+                recursiveIslem(sayi);
+            }
         }
     }
 }
